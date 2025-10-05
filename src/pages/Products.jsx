@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import useProducts from '../Hooks/useProducts'
 import ProductCard from '../components/ProductCard'
+import Loader from '../components/Loader'
 
 const Products = () => {
     const { products, loading, error } = useProducts()
@@ -8,12 +9,8 @@ const Products = () => {
     const term = search.trim().toLocaleLowerCase();
 
     const searchProduct = term ? products.filter(product => product.name.toLocaleLowerCase().includes(term)) : products;
-    
-    
-
-    const featuredProduct = Array.isArray(products) ? products : [];
     if (loading) {
-        return <p className="text-center text-lg">Loading...</p>;
+        return <Loader />;
     }
 
     if (error) {

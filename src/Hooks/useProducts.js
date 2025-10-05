@@ -7,19 +7,24 @@ const useProducts = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let timer;
     setLoading(true);
 
     axios
-      .get("/funitruerData.json") 
+      .get("/funitruerData.json")
       .then((res) => {
         if (Array.isArray(res.data)) {
-          setProducts(res.data); 
+          setProducts(res.data);
         } else {
-          setProducts([]); 
+          setProducts([]);
         }
       })
       .catch((err) => setError(err))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        timer = setTimeout(() => setLoading(false), 1000);
+      });
+
+    return () => clearTimeout(timer);
   }, []);
 
   return { products, loading, error };

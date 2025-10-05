@@ -6,13 +6,14 @@ import Hero from '../components/Hero'
 import WhyChooseUs from '../components/WhyChooseUs'
 import Features from '../components/Features'
 import Testimonial from '../components/Testimonial'
+import Loader from '../components/Loader'
 
 const Home = () => {
     const { products, loading, error } = useProducts()
     const featuredProduct = Array.isArray(products) ? products.slice(0, 6) : [];
 
     if (loading) {
-        return <p>Lodding data..........</p>;
+        return <Loader />;
     }
 
     if (error) {
