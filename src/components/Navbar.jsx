@@ -23,7 +23,7 @@ const Navbar = () => {
                         : "text-gray-700 font-work hover:text-cyan-600 hover:bg-cyan-50 px-4 py-2 rounded-md transition"
                 }
             >
-                Products
+                Furniture
             </NavLink>
 
             <NavLink
