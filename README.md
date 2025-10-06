@@ -1,16 +1,133 @@
-# React + Vite
+# Home Decoration Furniture
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern **frontend web application** built with **React.js**, **Vite**, **Tailwind CSS**, **Bootstrap**, and **React Icons**. This project showcases a stylish and responsive furniture store UI, focusing on user experience and aesthetic design.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## React Compiler
+👉 [View Live Demo](https://home-decoration-furniture.vercel.app)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Responsive Design**: Optimized for desktop, tablet, and mobile devices.
+* **Modern UI**: Clean and minimalist design with intuitive navigation.
+* **Reusable Components**: Built with React components for scalability.
+* **Interactive UI**: Includes modals, sliders, and hover effects.
+* **Fast Performance**: Powered by Vite for quick development and build times.
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend Framework**: React.js (Vite)
+* **Styling**: Tailwind CSS, Bootstrap
+* **Icons**: React Icons
+* **Development Tools**: ESLint, Prettier
+* **Deployment**: Vercel
+
+---
+
+## 📂 Project Structure
+
+```
+home-decoration-furniture/
+├── public/                # Static assets
+├── src/
+│   ├── assets/            # Images & media
+│   ├── components/        # Reusable UI components
+│   ├── pages/             # Page-level components (Home, Shop, Contact)
+│   ├── App.jsx            # Main app wrapper
+│   ├── main.jsx           # Entry point
+│   └── styles/            # Tailwind / Bootstrap custom styles
+├── package.json
+├── vite.config.js
+├── tailwind.config.js
+└── README.md
+```
+
+---
+
+## ⚙️ Getting Started
+
+### Prerequisites
+
+* Node.js (v16+ recommended)
+* npm or yarn package manager
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/amdadislam01/home-decoration-furniture.git
+
+# Navigate into the project directory
+cd home-decoration-furniture
+
+# Install dependencies
+npm install
+# or
+yarn install
+
+# Start the development server
+npm run dev
+# or
+yarn dev
+```
+
+Visit `http://localhost:5173/` in your browser.
+
+---
+
+## 📦 Build for Production
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+The production build will be in the `dist/` folder, ready to deploy.
+
+---
+
+## 📸 Screenshots
+
+> *Add screenshots or GIFs of your app here to highlight the design and features.*
+
+---
+
+## 🔮 Future Improvements
+
+* Add backend integration for real-time data
+* User authentication & profile system
+* Enhanced animations with Framer Motion
+* SEO and accessibility improvements
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your branch: `feature/your-feature`
+3. Commit your changes
+4. Push and open a Pull Request
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 📬 Contact
+
+* GitHub: [@amdadislam01](https://github.com/amdadislam01)
+* Email: *your email here*
+
+---
+
+⚡ Built with passion by **MD. Amdad Islam** ⚡
