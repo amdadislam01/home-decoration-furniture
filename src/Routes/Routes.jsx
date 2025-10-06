@@ -7,6 +7,7 @@ import Products from '../pages/Products';
 import ErrorPage from '../pages/ErrorPage';
 import Whislist from '../pages/Whislist';
 import ProductDetails from '../pages/ProductDetails';
+import Cart from '../pages/Cart';
 const router = createBrowserRouter([
     {
         path: '/',
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
                 path: '/whislist',
                 element: <Whislist />
             },
+            {
+                path: '/cart',     
+                element: <Cart />
+            }
         ]
     },
 

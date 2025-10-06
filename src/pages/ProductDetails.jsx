@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import useProducts from "../Hooks/useProducts";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { useCart } from "../Context/CartContext";
 
 const MySwal = withReactContent(Swal)
 
@@ -10,6 +11,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const { products } = useProducts();
   const product = products.find((p) => String(p.id) === id);
+  const { addToCart } = useCart();
 
   if (!product) {
     return (
@@ -96,7 +98,7 @@ const ProductDetails = () => {
 
           {/* Buttons */}
           <div className="flex gap-4">
-            <button className="px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-medium rounded-xl shadow-md transition duration-300">
+            <button  onClick={() => addToCart(product)} className="px-6 py-3 bg-cyan-600 hover:bg-cyan-700 text-white font-medium rounded-xl shadow-md transition duration-300 cursor-pointer">
               Add to Cart 🛒
             </button>
             <button onClick={() => handleWishlist()} className="px-6 py-3 bg-yellow-500 hover:bg-yellow-600 text-white font-medium rounded-xl shadow-md transition duration-300 cursor-pointer">
