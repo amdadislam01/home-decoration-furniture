@@ -1,17 +1,27 @@
 import React, { useState } from "react";
 import { useCart } from "../Context/CartContext";
 import { useNavigate } from "react-router";
+import { useUser } from "@clerk/clerk-react";
 
 const Payment = () => {
   const { cart, cartTotal, clearCart } = useCart();
   const [showForm, setShowForm] = useState(false);
   const navigate = useNavigate();
+  const { user } = useUser(); // Clerk user
+
+  if (!user) {
+    return (
+      <div className="flex items-center justify-center h-[60vh] text-xl font-semibold text-gray-600">
+        Please login to proceed with payment 🔒
+      </div>
+    );
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const orderData = {
-      id: Date.now(), 
+      id: Date.now(),
       cart,
       total: cartTotal,
       customer: {
@@ -20,12 +30,13 @@ const Payment = () => {
         address: e.target.address.value,
         method: e.target.method.value,
       },
+      userId: user.id, // Clerk user ID
     };
+
     const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
     localStorage.setItem("orders", JSON.stringify([...existingOrders, orderData]));
 
     clearCart();
-
     navigate("/order-success", { state: { order: orderData } });
   };
 
@@ -56,14 +67,28 @@ const Payment = () => {
           onClick={() => setShowForm(true)}
           className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition cursor-pointer"
         >
-          Confirm Payment 
+          Confirm Payment
         </button>
       ) : (
         <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow space-y-4">
           <h2 className="text-2xl font-semibold mb-4">Payment Details 📝</h2>
 
-          <input type="text" name="name" placeholder="Full Name" required className="w-full border p-3 rounded-lg" />
-          <input type="email" name="email" placeholder="Email Address" required className="w-full border p-3 rounded-lg" />
+          <input
+            type="text"
+            name="name"
+            defaultValue={user.fullName || ""}
+            placeholder="Full Name"
+            required
+            className="w-full border p-3 rounded-lg"
+          />
+          <input
+            type="email"
+            name="email"
+            defaultValue={user.primaryEmailAddress?.emailAddress || ""}
+            placeholder="Email Address"
+            required
+            className="w-full border p-3 rounded-lg"
+          />
           <input type="text" name="address" placeholder="Shipping Address" required className="w-full border p-3 rounded-lg" />
           <select name="method" required className="w-full border p-3 rounded-lg">
             <option value="">Select Payment Method</option>
