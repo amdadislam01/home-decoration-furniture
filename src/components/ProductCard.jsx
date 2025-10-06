@@ -3,13 +3,13 @@ import { Link } from 'react-router'
 
 const ProductCard = ({ item }) => {
     return (
-        <div className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition p-4 flex flex-col">
+        <div className="group bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition p-4 flex flex-col">
             {/* Image */}
             <div className="w-full h-52 overflow-hidden rounded-lg">
                 <img
                     src={item.image}
                     alt={item.name}
-                    className="w-full h-full object-cover hover:scale-105 transition"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
             </div>
 
