@@ -10,6 +10,9 @@ import ProductDetails from "../pages/ProductDetails";
 import Cart from "../pages/Cart";
 import Payment from "../pages/Payment";
 import OrderSuccess from "../pages/OrderSuccess";
+import PrivateRoute from "../components/PrivateRoute";
+import Login from "../pages/Login";
+import Orders from "../pages/Orders";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,16 +37,37 @@ const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/payment",
-        element: <Payment />,
+        element: (
+          <PrivateRoute>
+            <Payment />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/order-success",
-        element: <OrderSuccess />,
+        element: (
+          <PrivateRoute>
+            <OrderSuccess />
+          </PrivateRoute>
+        ),
       },
+      {
+        path: "/orders",
+        element: (
+          <PrivateRoute>
+            <Orders />
+          </PrivateRoute>
+        ),
+      },
+      { path: "/login", element: <Login /> },
     ],
   },
 ]);

@@ -3,21 +3,21 @@ import Navbar from '../components/Navbar'
 import { Outlet } from 'react-router'
 import Footer from '../components/Footer'
 import { CartProvider } from '../Context/CartContext'
-
-// Cart Context import
-
+import { AuthProvider } from '../Context/AuthContext' // ✅ Import AuthProvider
 
 const Layout = () => {
     return (
-        <CartProvider>
-            <div className='flex flex-col min-h-screen'>
-                <Navbar />
-                <div className="flex-1">
-                    <Outlet />
+        <AuthProvider> {/* ✅ Wrap with AuthProvider */}
+            <CartProvider>
+                <div className='flex flex-col min-h-screen'>
+                    <Navbar />
+                    <div className="flex-1">
+                        <Outlet />
+                    </div>
+                    <Footer />
                 </div>
-                <Footer />
-            </div>
-        </CartProvider>
+            </CartProvider>
+        </AuthProvider>
     )
 }
 

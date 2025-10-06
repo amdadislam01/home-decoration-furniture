@@ -7,12 +7,10 @@ const OrderSuccess = () => {
   const [order, setOrder] = useState(null);
 
   useEffect(() => {
-    // Payment page থেকে order data আসবে
     if (location.state?.order) {
       setOrder(location.state.order);
     } else {
-      // যদি ডাইরেক্ট এ page এ ঢোকে → home এ পাঠানো হবে
-      navigate("/");
+      navigate("/"); // direct visit করলে home redirect
     }
   }, [location, navigate]);
 
@@ -20,9 +18,7 @@ const OrderSuccess = () => {
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-10 mt-16">
-      <h1 className="text-3xl font-bold text-green-600 mb-6">
-        🎉 Order Placed Successfully!
-      </h1>
+      <h1 className="text-3xl font-bold text-green-600 mb-6">🎉 Order Placed Successfully!</h1>
 
       <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
       <div className="space-y-4">
@@ -34,9 +30,7 @@ const OrderSuccess = () => {
         ))}
       </div>
 
-      <h2 className="text-2xl font-bold mt-6">
-        Total Paid: ৳ {order.total}
-      </h2>
+      <h2 className="text-2xl font-bold mt-6">Total Paid: ৳ {order.total}</h2>
 
       <div className="mt-8 p-4 bg-gray-100 rounded-xl">
         <h3 className="font-semibold">Customer Info:</h3>

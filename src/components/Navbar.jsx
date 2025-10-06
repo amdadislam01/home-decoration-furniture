@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router";
 import { useCart } from "../Context/CartContext";
+import { useAuth } from "../Context/AuthContext";
 
 const Navbar = () => {
-     const { cart } = useCart();
+  const { cart } = useCart();
+  const { user, logout } = useAuth();
+  const [openProfile, setOpenProfile] = useState(false);
+
+  const handleLogout = () => {
+    logout();
+    window.location.href = "/login";
+  };
+
   const links = (
     <>
       <NavLink
-        to={"/"}
+        to="/"
         className={({ isActive }) =>
           isActive
             ? "bg-cyan-600 text-white font-semibold px-4 py-2 rounded-md shadow-md"
@@ -16,9 +25,8 @@ const Navbar = () => {
       >
         Home
       </NavLink>
-
       <NavLink
-        to={"/product"}
+        to="/product"
         className={({ isActive }) =>
           isActive
             ? "bg-cyan-600 text-white font-semibold px-4 py-2 rounded-md shadow-md"
@@ -27,9 +35,8 @@ const Navbar = () => {
       >
         Furniture
       </NavLink>
-
       <NavLink
-        to={"/whislist"}
+        to="/whislist"
         className={({ isActive }) =>
           isActive
             ? "bg-cyan-600 text-white font-semibold px-4 py-2 rounded-md shadow-md"
@@ -40,56 +47,24 @@ const Navbar = () => {
       </NavLink>
     </>
   );
+
   return (
     <div className="fixed top-0 left-0 w-full z-50 bg-base-100 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 md:px-10 navbar">
         {/* Left */}
         <div className="navbar-start">
-          {/* Mobile Menu */}
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
-            >
-              {links}
-              {/* Mobile Buttons */}
-              <div className="mt-3 flex flex-col gap-2">
-                <a className=" font-work px-4 py-2 bg-cyan-600 hover:bg-cyan-700 rounded-md text-white text-center cursor-pointer">
-                  Login
-                </a>
-              </div>
-            </ul>
-          </div>
-
-          {/* Brand */}
-          <a className=" font-work text-2xl font-bold text-cyan-700 mr-3">
-            Home<span className="text-gray-900 font-work ">Decor</span>
-          </a>
+          <Link className="font-work text-2xl font-bold text-cyan-700 mr-3" to="/">
+            Home<span className="text-gray-900 font-work">Decor</span>
+          </Link>
         </div>
 
-        {/* Desktop Menu */}
+        {/* Center */}
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
 
-        {/* Right (Desktop Buttons) */}
-        <div className="navbar-end gap-8 hidden sm:flex">
+        {/* Right */}
+        <div className="navbar-end flex items-center gap-4">
           <Link to="/cart" className="relative cursor-pointer">
             <span className="text-2xl">🛒</span>
             {cart.length > 0 && (
@@ -98,9 +73,43 @@ const Navbar = () => {
               </span>
             )}
           </Link>
-          <a className=" font-work px-4 py-2 bg-cyan-600 hover:bg-cyan-700 rounded-md text-white cursor-pointer">
-            Login
-          </a>
+
+          {user ? (
+            <div className="relative">
+              {/* Profile Image */}
+              <img
+                onClick={() => setOpenProfile(!openProfile)}
+                src={user.picture}
+                alt="Profile"
+                className="w-10 h-10 rounded-full cursor-pointer border-2 border-cyan-600"
+              />
+
+              {/* Dropdown */}
+              {openProfile && (
+                <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-lg overflow-hidden z-50">
+                  <Link
+                    to="/orders"
+                    className="block px-4 py-2 text-gray-700 hover:bg-cyan-50"
+                  >
+                    My Orders
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="w-full text-left px-4 py-2 text-gray-700 hover:bg-red-50"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className="font-work px-4 py-2 bg-cyan-600 hover:bg-cyan-700 rounded-md text-white cursor-pointer"
+            >
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>

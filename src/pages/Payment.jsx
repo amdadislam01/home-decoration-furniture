@@ -10,8 +10,8 @@ const Payment = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // 🔹 Collect form data
     const orderData = {
+      id: Date.now(), 
       cart,
       total: cartTotal,
       customer: {
@@ -21,11 +21,11 @@ const Payment = () => {
         method: e.target.method.value,
       },
     };
+    const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
+    localStorage.setItem("orders", JSON.stringify([...existingOrders, orderData]));
 
-    // 🔹 Clear cart
     clearCart();
 
-    // 🔹 Redirect to Order Success page with state
     navigate("/order-success", { state: { order: orderData } });
   };
 
@@ -41,78 +41,40 @@ const Payment = () => {
     <div className="max-w-4xl mx-auto px-6 py-10 mt-16">
       <h1 className="text-3xl font-bold mb-6">Payment Page 💳</h1>
 
-      {/* 🛒 Order Summary */}
       <div className="space-y-4 mb-6">
         {cart.map((item) => (
-          <div
-            key={item.id}
-            className="flex justify-between bg-white p-4 rounded-xl shadow"
-          >
-            <span>
-              {item.name} x {item.quantity}
-            </span>
+          <div key={item.id} className="flex justify-between bg-white p-4 rounded-xl shadow">
+            <span>{item.name} x {item.quantity}</span>
             <span>৳ {item.price * item.quantity}</span>
           </div>
         ))}
         <h2 className="text-2xl font-semibold mt-6">Total: ৳ {cartTotal}</h2>
       </div>
 
-      {/* 🔹 Confirm Button */}
       {!showForm ? (
         <button
           onClick={() => setShowForm(true)}
-          className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition"
+          className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition cursor-pointer"
         >
-          Confirm Payment ✅
+          Confirm Payment 
         </button>
       ) : (
-        <form
-          onSubmit={handleSubmit}
-          className="bg-white p-6 rounded-xl shadow space-y-4"
-        >
+        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl shadow space-y-4">
           <h2 className="text-2xl font-semibold mb-4">Payment Details 📝</h2>
 
-          <input
-            type="text"
-            name="name"
-            placeholder="Full Name"
-            required
-            className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-          />
-
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            required
-            className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-          />
-
-          <input
-            type="text"
-            name="address"
-            placeholder="Shipping Address"
-            required
-            className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-          />
-
-          <select
-            name="method"
-            required
-            className="w-full border p-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-          >
+          <input type="text" name="name" placeholder="Full Name" required className="w-full border p-3 rounded-lg" />
+          <input type="email" name="email" placeholder="Email Address" required className="w-full border p-3 rounded-lg" />
+          <input type="text" name="address" placeholder="Shipping Address" required className="w-full border p-3 rounded-lg" />
+          <select name="method" required className="w-full border p-3 rounded-lg">
             <option value="">Select Payment Method</option>
             <option value="Bkash">Bkash</option>
             <option value="Nagad">Nagad</option>
             <option value="Card">Credit/Debit Card</option>
-            <option value="COD">Cash on Delivery</option>
+            <option value="Cash on Delivery">Cash on Delivery</option>
           </select>
 
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition"
-          >
-            Pay Now 💳
+          <button type="submit" className="w-full bg-cyan-600 text-white py-3 rounded-lg hover:bg-cyan-700 transition cursor-pointer">
+            Payment Now 💳
           </button>
         </form>
       )}
