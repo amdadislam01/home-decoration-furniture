@@ -7,7 +7,7 @@ const Payment = () => {
   const { cart, cartTotal, clearCart } = useCart();
   const [showForm, setShowForm] = useState(false);
   const navigate = useNavigate();
-  const { user } = useUser(); // Clerk user
+  const { user } = useUser(); 
 
   if (!user) {
     return (
@@ -30,7 +30,7 @@ const Payment = () => {
         address: e.target.address.value,
         method: e.target.method.value,
       },
-      userId: user.id, // Clerk user ID
+      userId: user.id, 
     };
 
     const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];

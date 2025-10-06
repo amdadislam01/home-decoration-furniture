@@ -10,7 +10,7 @@ const OrderSuccess = () => {
     if (location.state?.order) {
       setOrder(location.state.order);
     } else {
-      navigate("/"); // direct visit করলে home redirect
+      navigate("/"); 
     }
   }, [location, navigate]);
 

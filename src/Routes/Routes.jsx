@@ -1,5 +1,5 @@
 import React from "react";
-import { createBrowserRouter } from "react-router"; // ✅ react-router-dom
+import { createBrowserRouter } from "react-router";
 
 import Layout from "../Layout/Layout";
 import Home from "../pages/Home";
@@ -22,11 +22,7 @@ const router = createBrowserRouter([
       { path: "/product", element: <Products /> },
       { path: "/product/:id", element: <ProductDetails /> },
       { path: "/whislist", element: <Whislist /> },
-
-      // Cart accessible without login
       { path: "/cart", element: <Cart /> },
-
-      // Payment, OrderSuccess, Orders - Clerk will handle login redirect
       { path: "/payment", element: <Payment /> },
       { path: "/order-success", element: <OrderSuccess /> },
       { path: "/orders", element: <Orders /> },
