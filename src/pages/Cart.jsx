@@ -1,9 +1,10 @@
 import React from "react";
 import { useCart } from "../Context/CartContext";
+import { useNavigate } from "react-router";
 
 const Cart = () => {
   const { cart, removeFromCart, increaseQty, decreaseQty } = useCart();
-
+  const navigate = useNavigate();
   const totalPrice = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -77,7 +78,7 @@ const Cart = () => {
           Total: <span className="text-green-600">৳ {totalPrice}</span>
         </h2>
         <button
-          onClick={() => alert("Proceeding to Payment 💳")}
+          onClick={() => navigate("/payment")}
           className="mt-4 md:mt-0 px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition cursor-pointer"
         >
           Proceed to Payment
