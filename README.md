@@ -95,7 +95,7 @@ The production build will be in the `dist/` folder, ready to deploy.
 
 ## 📸 Screenshots
 
-> *Add screenshots or GIFs of your app here to highlight the design and features.*
+ <img src="https://ik.imagekit.io/yqnbhdlo4/Img/home?updatedAt=1759770625524" alt="" />
 
 ---
 
