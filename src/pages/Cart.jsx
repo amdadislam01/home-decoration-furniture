@@ -28,7 +28,7 @@ const Cart = () => {
             key={item.id}
             className="flex items-center justify-between p-4 bg-white shadow rounded-xl"
           >
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 w-2/5"> 
               <img
                 src={item.image}
                 alt={item.name}
@@ -40,7 +40,7 @@ const Cart = () => {
               </div>
             </div>
 
-            {/*  Quantity Control */}
+            {/* Quantity Control */}
             <div className="flex items-center gap-4 bg-gray-100 px-4 py-2 rounded-full shadow">
               <button
                 onClick={() => decreaseQty(item.id)}
@@ -49,7 +49,7 @@ const Cart = () => {
                 -
               </button>
 
-              <span className="text-lg font-semibold text-gray-800 min-w-[30px] text-center">
+              <span className="text-lg font-semibold text-gray-800 w-10 flex items-center justify-center">
                 {item.quantity}
               </span>
 
@@ -61,7 +61,7 @@ const Cart = () => {
               </button>
             </div>
 
-            {/*  Remove */}
+            {/* Remove */}
             <button
               onClick={() => removeFromCart(item.id)}
               className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition cursor-pointer"
@@ -72,7 +72,7 @@ const Cart = () => {
         ))}
       </div>
 
-      {/*  Total Price */}
+      {/* Total Price */}
       <div className="mt-10 bg-gray-100 p-6 rounded-xl shadow flex flex-col md:flex-row justify-between items-center">
         <h2 className="text-xl font-bold">
           Total: <span className="text-green-600">৳ {totalPrice}</span>
