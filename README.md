@@ -126,7 +126,7 @@ This project is licensed under the **MIT License**.
 ## 📬 Contact
 
 * GitHub: [@amdadislam01](https://github.com/amdadislam01)
-* Email: *your email here*
+* Email: *amdad20063@gmail.com*
 
 ---
 
