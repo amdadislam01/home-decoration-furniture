@@ -1,4 +1,4 @@
-# Home Decoration Furnitur
+# Home Decoration Furniture
 
 A modern **frontend web application** built with **React.js**, **Vite**, **Tailwind CSS**, **Bootstrap**, and **React Icons**. This project showcases a stylish and responsive furniture store UI, focusing on user experience and aesthetic design.
 
