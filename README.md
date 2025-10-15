@@ -38,7 +38,7 @@ home-decoration-furniture/
 ├── src/
 │   ├── assets/            # Images & media
 │   ├── components/        # Reusable UI components
-│   ├── pages/             # Page-level components (Home, Shop, Contact)
+│   ├── pages/             # Page-level components (Home, Furniture, Contact)
 │   ├── App.jsx            # Main app wrapper
 │   ├── main.jsx           # Entry point
 │   └── styles/            # Tailwind / Bootstrap custom styles
