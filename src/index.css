@@ -7,4 +7,5 @@
 * {
   font-family: "Roboto";
   scroll-behavior: smooth;
+  scrollbar-width: none;
 }
