@@ -1,4 +1,4 @@
-# Home Decoration Furniture
+# Home Decoration Furniture 
 
 A modern **frontend web application** built with **React.js**, **Vite**, **Tailwind CSS**, **Bootstrap**, and **React Icons**. This project showcases a stylish and responsive furniture store UI, focusing on user experience and aesthetic design.
 
@@ -38,7 +38,7 @@ home-decoration-furniture/
 ├── src/
 │   ├── assets/            # Images & media
 │   ├── components/        # Reusable UI components
-│   ├── pages/             # Page-level components (Home, Shop, Contact)
+│   ├── pages/             # Page-level components (Home, Furniture, Contact)
 │   ├── App.jsx            # Main app wrapper
 │   ├── main.jsx           # Entry point
 │   └── styles/            # Tailwind / Bootstrap custom styles
@@ -95,7 +95,7 @@ The production build will be in the `dist/` folder, ready to deploy.
 
 ## 📸 Screenshots
 
-> *Add screenshots or GIFs of your app here to highlight the design and features.*
+ <img src="https://ik.imagekit.io/yqnbhdlo4/Img/home?updatedAt=1759770625524" alt="" />
 
 ---
 
@@ -115,18 +115,13 @@ The production build will be in the `dist/` folder, ready to deploy.
 3. Commit your changes
 4. Push and open a Pull Request
 
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
 
 ---
 
 ## 📬 Contact
 
 * GitHub: [@amdadislam01](https://github.com/amdadislam01)
-* Email: *your email here*
+* Email: *amdad20063@gmail.com*
 
 ---
 
